@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   adhan: ^2.0.0
+  carousel_slider: ^4.2.1
   curved_navigation_bar: ^1.0.3
   flutter:
     sdk: flutter
@@ -36,6 +37,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   intl: ^0.18.1
   lottie: ^2.6.0
+  quran: ^1.2.2
   sleek_circular_slider: ^2.0.1
 
 
@@ -70,6 +72,10 @@ flutter:
     - assets/animations/
     - assets/images/
     - assets/images/images-removebg-preview.png
+    - assets/images/quran/
+    - assets/surah.json
+    - assets/images/Azkar/
+    - assets/images/quran/png-clipart-quran-islam-tafsir-ayah-dua-golden-atmosphere-badge-round-yellow-floral-rectangle-arabic-removebg-preview.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -87,7 +93,12 @@ flutter:
     - family: NotoKufiArabic
       fonts:
         - asset: assets/fonts/ArefRuqaa-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+    
+    
+    - family: quran
+      fonts:
+        - asset: assets/fonts/AmiriQuran-Regular.ttf
+      #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

@@ -22,8 +22,7 @@ class _salahState extends State<salah> {
     salahmodel(image: 'assets/images/alfagr.jpg', name: 'الفجر', prayer: fajr1),
     salahmodel(image: 'assets/images/Duhar.jpg', name: 'الضهر', prayer: dhuhr),
     salahmodel(image: 'assets/images/alasr.webp', name: 'العصر', prayer: asr),
-    salahmodel(
-        image: 'assets/images/maghrab.jpg', name: 'المغرب', prayer: maghrib),
+    salahmodel(image: 'assets/images/maghrab.jpg', name: 'المغرب', prayer: maghrib),
     salahmodel(image: 'assets/images/alasha.jpg', name: 'العشاء', prayer: isha),
   ];
 
@@ -44,20 +43,20 @@ class _salahState extends State<salah> {
           const SizedBox(
             height: 0,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              'My Location',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              'Auto Detect',
-              style: TextStyle(color: Colors.blue, fontSize: 15),
-            ),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 12),
+          //   child: Text(
+          //     'My Location',
+          //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+          //   ),
+          // ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 12),
+          //   child: Text(
+          //     'Auto Detect',
+          //     style: TextStyle(color: Colors.blue, fontSize: 15),
+          //   ),
+          // ),
           const SizedBox(
             height: 10,
           ),

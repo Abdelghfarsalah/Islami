@@ -11,9 +11,11 @@ class appbarhome extends StatelessWidget {
         IconButton(
             onPressed: () {}, icon: const Icon(FontAwesomeIcons.grip)),
         const Spacer(),
-        const Text('Home',style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w900
+        const Text('مواعيد الصلاه',style: TextStyle(
+          fontFamily: 'quran',
+          fontSize: 30,
+          fontWeight: FontWeight.bold
+
         ),),
         const Spacer(),
         IconButton(
