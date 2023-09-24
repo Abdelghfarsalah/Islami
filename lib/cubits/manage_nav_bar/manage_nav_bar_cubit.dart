@@ -11,7 +11,7 @@ part 'manage_nav_bar_state.dart';
 
 class ManageNavBarCubit extends Cubit<ManageNavBarState> {
   ManageNavBarCubit() : super(ManageNavBarInitial());
-  int currentIndex=0;
+  int currentIndex=3;
   List<Widget>  listscreen=const[
   salah(),
   tasbih(),
