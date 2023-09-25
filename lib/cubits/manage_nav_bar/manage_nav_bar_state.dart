@@ -1,7 +1,8 @@
 part of 'manage_nav_bar_cubit.dart';
 
 @immutable
-sealed class ManageNavBarState {}
+class ManageNavBarState {}
 
-final class ManageNavBarInitial extends ManageNavBarState {}
-final class changeindexSuccess extends ManageNavBarState {}
+class ManageNavBarInitial extends ManageNavBarState {}
+
+class changeindexSuccess extends ManageNavBarState {}

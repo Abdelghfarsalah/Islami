@@ -13,21 +13,28 @@ class salah extends StatefulWidget {
   State<salah> createState() => _salahState();
 }
 
+  DateTime now = DateTime.now();
+
 class _salahState extends State<salah> {
-  var now = DateFormat.jm().format(DateTime.timestamp());
-  var n=DateTime.now().difference(DateTime.now());
-  var data =
-      '${DateTime.timestamp().year}/${DateTime.timestamp().month}/${DateTime.timestamp().day}';
+String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
+void initState(){
+  super.initState();
+}
+void dispose(){
+  super.dispose();
+}
   List<salahmodel> listsalah = [
     salahmodel(image: 'assets/images/alfagr.jpg', name: 'الفجر', prayer: fajr1),
-    salahmodel(image: 'assets/images/Duhar.jpg', name: 'الضهر', prayer: dhuhr),
+    salahmodel(image: 'assets/images/Duhar.jpg', name: 'الظهر', prayer: dhuhr),
     salahmodel(image: 'assets/images/alasr.webp', name: 'العصر', prayer: asr),
-    salahmodel(image: 'assets/images/maghrab.jpg', name: 'المغرب', prayer: maghrib),
+    salahmodel(
+        image: 'assets/images/maghrab.jpg', name: 'المغرب', prayer: maghrib),
     salahmodel(image: 'assets/images/alasha.jpg', name: 'العشاء', prayer: isha),
   ];
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -43,20 +50,6 @@ class _salahState extends State<salah> {
           const SizedBox(
             height: 0,
           ),
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 12),
-          //   child: Text(
-          //     'My Location',
-          //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-          //   ),
-          // ),
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 12),
-          //   child: Text(
-          //     'Auto Detect',
-          //     style: TextStyle(color: Colors.blue, fontSize: 15),
-          //   ),
-          // ),
           const SizedBox(
             height: 10,
           ),
@@ -84,15 +77,15 @@ class _salahState extends State<salah> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // Text(
+                                //   data,
+                                //   style: const TextStyle(
+                                //       fontSize: 20,
+                                //       fontWeight: FontWeight.w900,
+                                //       color: Colors.white),
+                                // ),
                                 Text(
-                                  data,
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white),
-                                ),
-                                Text(
-                                  now,
+                                  formattedDate,
                                   style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
@@ -118,14 +111,14 @@ class _salahState extends State<salah> {
                         ],
                       ),
                     ),
-                    Text('استعد  لصلاه الفجر ',style:const TextStyle(
-                      color: Colors.white,
-                      fontSize: 30
-                    ),),
-                    Text('لا تنسي صلاه العشاء ',style:const TextStyle(
-                      color: Colors.white,
-                      fontSize: 15
-                    ),)
+                    Text(
+                      'استعد  لصلاه الظهر ',
+                      style: const TextStyle(color: Colors.white, fontSize: 30),
+                    ),
+                    Text(
+                      'لا تنسي صلاه الفجر ',
+                      style: const TextStyle(color: Colors.white, fontSize: 15),
+                    )
                   ]),
                 ),
                 Positioned(
@@ -163,7 +156,7 @@ class _salahState extends State<salah> {
                                         fontWeight: FontWeight.w800,
                                         height: 1),
                                   ),
-                                  Text(data, style: TextStyle()),
+                                  //Text(data, style: TextStyle()),
                                 ],
                               ),
                               const Spacer(),
@@ -188,20 +181,23 @@ class _salahState extends State<salah> {
                           endIndent: 10,
                           indent: 10,
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.symmetric(horizontal: 20),
                           child: Align(
                               alignment: Alignment.bottomRight,
                               child: Text(
-                                'بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ ',
+                                'قل لَن يُصيبَنا إِلّا ما كَتَبَ اللَّـهُ لَنا هُوَ مَولانا وَعَلَى اللَّـهِ فَليَتَوَكَّلِ المُؤمِنونَ',
                                 style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w900),
+                                    fontSize: 12, fontWeight: FontWeight.w900),
+                                textAlign: TextAlign.justify,
                               )),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text('sasackmkdj kadsfhkjadhk fmdlkdjf')
                       ],
                     ),
                   ),

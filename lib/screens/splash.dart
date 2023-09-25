@@ -38,8 +38,8 @@ class _splashState extends State<splash> {
   }
 
   void gotohome() {
-    Future.delayed(const Duration(seconds: 10), () {
-      go(context, const home());
+    Future.delayed(const Duration(seconds: 4), () {
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const home()), (route) => false);
     });
   }
 }

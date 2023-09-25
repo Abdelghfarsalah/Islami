@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:islam/models/surahmodel.dart';
+import 'package:islam/screens/home/homescreens/audio.dart';
 import 'package:islam/screens/home/homescreens/quranSurahpage.dart';
 import 'package:islam/utils/functions.dart';
-
+import 'package:quran/quran.dart' as q;
 class customsurah extends StatelessWidget {
   const customsurah({super.key, required this.model});
   final Surah model;
@@ -56,7 +57,10 @@ class customsurah extends StatelessWidget {
             ),
             const Spacer(),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                  print(q.getAudioURLBySurah(model.id));
+                  go(context, audiopage(model: model,));
+              },
               icon: const Icon(FontAwesomeIcons.play),
             ),
           ],

@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   adhan: ^2.0.0
+  audioplayers: ^5.1.0
   carousel_slider: ^4.2.1
   curved_navigation_bar: ^1.0.3
   flutter:
@@ -50,12 +51,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
 
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: true
   ios: true
-  image_path: "assets/images/quran/pngtree-al-quran-opened-read-photography-image_604727.jpg"
+  image_path: "assets/images/dome.png"
   min_sdk_android: 21
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:islam/cubits/manage_nav_bar/manage_nav_bar_cubit.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class tasbih extends StatefulWidget {
@@ -159,6 +162,15 @@ class _tasbihState extends State<tasbih> {
                 const SizedBox(
                   height: 50,
                 ),
+              IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+              BlocProvider.of<ManageNavBarCubit>(context).changeindex(3);
+            },
+            icon: const Icon(
+              FontAwesomeIcons.house,
+              color: Colors.grey,
+            )),
               ],
             ),
           ),

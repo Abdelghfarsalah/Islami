@@ -8,7 +8,6 @@ import 'package:islam/models/surahmodel.dart';
 import 'package:islam/screens/splash.dart';
 
 void main() {
-  
   runApp(const islamapp());
 }
 
@@ -18,10 +17,10 @@ class islamapp extends StatefulWidget {
   @override
   State<islamapp> createState() => _islamappState();
 }
- List<Surah> listsurah = [];
-class _islamappState extends State<islamapp> {
-   
 
+List<Surah> listsurah = [];
+
+class _islamappState extends State<islamapp> {
   @override
   void initState() {
     super.initState();
@@ -43,13 +42,13 @@ class _islamappState extends State<islamapp> {
 
   @override
   Widget build(BuildContext context) {
-    return  MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
-      BlocProvider(
-        create: (context) => ManageNavBarCubit(),
-      )
+        BlocProvider(
+          create: (context) => ManageNavBarCubit(),
+        )
       ],
-      child:const MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: splash(),
       ),

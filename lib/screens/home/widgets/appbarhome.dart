@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:islam/cubits/manage_nav_bar/manage_nav_bar_cubit.dart';
 
 class appbarhome extends StatelessWidget {
   const appbarhome({super.key});
@@ -9,7 +11,13 @@ class appbarhome extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-            onPressed: () {}, icon: const Icon(FontAwesomeIcons.grip)),
+            onPressed: () {
+              BlocProvider.of<ManageNavBarCubit>(context).changeindex(3);
+            },
+            icon: const Icon(
+              FontAwesomeIcons.house,
+              color: Colors.grey,
+            )),
         const Spacer(),
         const Text('مواعيد الصلاه',style: TextStyle(
           fontFamily: 'quran',
