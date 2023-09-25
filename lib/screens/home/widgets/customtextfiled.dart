@@ -9,14 +9,13 @@ class customtextfiled extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       child: TextField(
         onChanged:onChanged,
-        keyboardType: TextInputType.number,
         decoration: InputDecoration(
           
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             
             ),
-          hintText: 'ادخل رقم السورة',
+          hintText: 'ادخل رقم او اسم السورة',
           
         ),
       ),

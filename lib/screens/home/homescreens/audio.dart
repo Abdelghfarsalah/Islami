@@ -1,8 +1,9 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:islam/models/surahmodel.dart';
 import 'package:quran/quran.dart' as q;
+import 'package:just_audio/just_audio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class audiopage extends StatefulWidget {
   const audiopage({super.key, required this.model});
@@ -13,23 +14,30 @@ class audiopage extends StatefulWidget {
 
 class _audiopageState extends State<audiopage> {
   double valu = 0;
-  final player = AudioPlayer()..setSource(AssetSource('images/1.mp3'));
+  //final player = AudioPlayer()..setSource(AssetSource('images/1.mp3'));
   Duration position = Duration.zero;
   Duration duration = Duration.zero;
   bool play = true;
   bool rotate = false;
+  AudioPlayer player = AudioPlayer();
   void initState() {
     super.initState();
-    player.onDurationChanged.listen((event) {
+    // player.bufferedPosition.listen((event) {
+    //   setState(() {
+    //     duration = event;
+    //   });
+    // });
+    duration = player.duration ?? Duration.zero;
+    player.positionStream.listen((s) {
       setState(() {
-        duration = event;
+        position = s;
       });
     });
-    player.onPositionChanged.listen((event) {
-      setState(() {
-        position = event;
-      });
-    });
+    // player.onPositionChanged.listen((event) {
+    //   setState(() {
+    //     position = event;
+    //   });
+    // });
   }
 
   void dispose() {
@@ -39,6 +47,7 @@ class _audiopageState extends State<audiopage> {
   @override
   Widget build(BuildContext context) {
     String audio = q.getAudioURLBySurah(widget.model.id);
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -47,7 +56,7 @@ class _audiopageState extends State<audiopage> {
             image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                    'assets/images/9bd659bf4ec17a8c338206fb73d8ad9c.jpg'))),
+                    'assets/images/صور الشيخ مشاري راشد العفاسي.jpg'))),
         child: Column(
           children: [
             Container(
@@ -58,12 +67,9 @@ class _audiopageState extends State<audiopage> {
                       colors: [Colors.blue, Colors.transparent])),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                  ),
                   Stack(clipBehavior: Clip.none, children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
@@ -73,10 +79,10 @@ class _audiopageState extends State<audiopage> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.3,
+                            height: MediaQuery.of(context).size.height * 0.7,
                           ),
                           Slider(
-                              activeColor:const Color.fromARGB(255, 7, 54, 93),
+                              activeColor: const Color.fromARGB(255, 7, 54, 93),
                               inactiveColor: Colors.grey,
                               min: 0,
                               max: duration.inSeconds.toDouble(),
@@ -91,14 +97,24 @@ class _audiopageState extends State<audiopage> {
                             child: Row(
                               children: [
                                 Text(
-                                    '${position.inHours}:${position.inMinutes}:${position.inSeconds}'),
+                                  '${position.inHours}:${position.inMinutes}:${position.inSeconds}',
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 8, 52, 87),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                                 Spacer(),
                                 Text(
-                                    '${duration.inHours}:${duration.inMinutes}:${duration.inSeconds}')
+                                  '${duration.inHours}:${duration.inMinutes}:${duration.inSeconds}',
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 8, 52, 87),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                )
                               ],
                             ),
                           ),
-                        const  SizedBox(
+                          const SizedBox(
                             height: 50,
                           ),
                           Row(
@@ -112,15 +128,17 @@ class _audiopageState extends State<audiopage> {
                                     color:
                                         const Color.fromARGB(255, 4, 30, 51)),
                                 child: Center(
-                                    child: IconButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        icon: const Icon(
-                                          FontAwesomeIcons.house,
-                                          size: 25,
-                                          color: Colors.white,
-                                        ))),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    icon: const Icon(
+                                      FontAwesomeIcons.house,
+                                      size: 25,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               ),
                               Container(
                                 height: 80,
@@ -132,19 +150,30 @@ class _audiopageState extends State<audiopage> {
                                 child: Center(
                                     child: IconButton(
                                         onPressed: () async {
-                                          print(position);
-                                          print(duration);
                                           if (!play) {
                                             player.stop();
+                                            Fluttertoast.showToast(
+                                                msg:
+                                                    "صدق الله العظيم",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: Colors.blueAccent,
+                                                textColor: Colors.white,
+                                                fontSize: 30);
+                                              
                                           } else {
-                                            player.play(
-                                                AssetSource('images/1.mp3'));
+                                            await player.setUrl(audio);
+                                            player.play();
+                                            setState(() {
+                                              duration = player.duration!;
+                                            });
                                           }
                                           play = !play;
                                           setState(() {});
                                         },
                                         icon: Icon(
-                                          play!
+                                          play
                                               ? FontAwesomeIcons.play
                                               : FontAwesomeIcons.pause,
                                           size: 30,
@@ -179,7 +208,7 @@ class _audiopageState extends State<audiopage> {
                       ),
                     ),
                     Positioned(
-                      top: -100,
+                      top: MediaQuery.of(context).size.width * 0.6,
                       left: MediaQuery.of(context).size.width * 0.25,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.3,

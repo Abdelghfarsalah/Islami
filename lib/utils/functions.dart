@@ -9,7 +9,7 @@ int findsurah({required String text}){
   int x;
   for(int i=0;i<listsurah.length;i++)
   {
-    if(text==listsurah[i].id.toString()){
+    if(text==listsurah[i].id.toString()||text==listsurah[i].arabicName){
       return i;
     }
   }
